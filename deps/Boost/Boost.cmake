@@ -9,8 +9,12 @@ if (WIN32)
 else()
 	set(_boost_url "https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz")
 	set(_boost_hash AEB26F80E80945E82EE93E5939BAEBDCA47B9DEE80A07D3144BE1E1A6A66DD6A)
+    #set(_boost_url "https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz")
+	#set(_boost_hash 94CED8B72956591C4775AE2207A9763D3600B30D9D7446562C552F0A14A63BE7)
+    #set(_boost_url "https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.gz")
+    #set(_boost_hash a5800f405508f5df8114558ca9855d2640a2de8f0445f051fa1c7c3383045724)
     set(_bootstrap_cmd ./bootstrap.sh)
-    set(_build_cmd ./b2)
+    set(_build_cmd ./b2 -sICONV_PATH=/opt/local)
 endif()
 
 set(_patch_command ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_LIST_DIR}/common.jam ./tools/build/src/tools/common.jam)
@@ -170,10 +174,10 @@ ExternalProject_Add(
     URL_HASH SHA256=${_boost_hash}
     DOWNLOAD_DIR ${DEP_DOWNLOAD_DIR}/Boost
     CONFIGURE_COMMAND ./bootstrap.sh
-        --with-toolset=clang
+        #--with-toolset=clang
         --with-libraries=date_time,filesystem,iostreams,locale,log,regex,system,thread
         "--prefix=${DESTDIR}/usr/local"
-#    PATCH_COMMAND ${_patch_command}
+    PATCH_COMMAND ${_patch_command}
     BUILD_COMMAND "${_build_cmd}"
     BUILD_IN_SOURCE    ON
     INSTALL_COMMAND "${_install_cmd}"
