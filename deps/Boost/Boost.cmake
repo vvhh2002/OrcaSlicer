@@ -10,7 +10,7 @@ else()
 	set(_boost_url "https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz")
 	set(_boost_hash AEB26F80E80945E82EE93E5939BAEBDCA47B9DEE80A07D3144BE1E1A6A66DD6A)
     set(_bootstrap_cmd ./bootstrap.sh)
-    set(_build_cmd ./b2)
+    set(_build_cmd ./b2 -sICONV_PATH=/opt/local)
 endif()
 
 set(_patch_command ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_LIST_DIR}/common.jam ./tools/build/src/tools/common.jam)

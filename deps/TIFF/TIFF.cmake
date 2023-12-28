@@ -12,6 +12,8 @@ if (APPLE)
             -Djbig:BOOL=OFF
             -Dzstd:BOOL=OFF
             -Dpixarlog:BOOL=OFF
+            -Dlerc:BOOL=OFF
+            -Dlibdeflate:BOOL=OFF
     )
 else()
     orcaslicer_add_cmake_project(TIFF

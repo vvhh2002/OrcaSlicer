@@ -111,6 +111,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/platform/osx/Info.plist.in ${CMAKE_CU
 if (WIN32)
     add_library(OrcaSlicer SHARED OrcaSlicer.cpp OrcaSlicer.hpp BaseException.cpp BaseException.h StackWalker.cpp StackWalker.h)
 else ()
+    link_directories(/opt/local/lib)
     add_executable(OrcaSlicer OrcaSlicer.cpp OrcaSlicer.hpp)
 endif ()
 
